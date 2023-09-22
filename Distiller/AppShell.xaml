@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Distiller.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:controls="clr-namespace:Distiller.Controls"
+    xmlns:views="clr-namespace:Distiller.Views"
+    xmlns:viewsAging="clr-namespace:Distiller.Views.Aging"
+    xmlns:viewsBottling="clr-namespace:Distiller.Views.Bottling"
+    xmlns:viewsInfo="clr-namespace:Distiller.Views.Info"
+    xmlns:viewsProduction="clr-namespace:Distiller.Views.Production"
+    xmlns:viewsSettings="clr-namespace:Distiller.Views.Settings"
+    xmlns:viewsTools="clr-namespace:Distiller.Views.Tools"
+    >
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.FlyoutBehavior" Value="Locked"></Setter>
+                <Setter Property="Shell.FlyoutWidth" Value="200"></Setter>
+            </Style>
+
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <Shell.ItemTemplate>
+        <DataTemplate x:Key="FlyoutTemplate">
+            <Grid x:Name="FlyoutItemLayout"
+                  HeightRequest="{OnPlatform 44, Android=50}"
+                  ColumnSpacing="{OnPlatform WinUI=0, MacCatalyst=0}"
+                  RowSpacing="{OnPlatform WinUI=0, MacCatalyst=0}">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{OnPlatform Android=54, iOS=50, WinUI=Auto, MacCatalyst=Auto}" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image x:Name="FlyoutItemImage"
+                       Source="{Binding FlyoutIcon}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="{OnPlatform Default=Center, WinUI=Start, MacCatalyst=Start}"
+                       HeightRequest="{OnPlatform Android=24, iOS=22, WinUI=16, MacCatalyst=16}"
+                       WidthRequest="{OnPlatform Android=24, iOS=22, WinUI=16, MacCatalyst=16}">
+                    <Image.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="WinUI" Value="12,0,12,0" />
+                            <On Platform="MacCatalyst" Value="12,0,12,0" />
+                        </OnPlatform>
+                    </Image.Margin>
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{StaticResource Primary}" />
+                    </Image.Behaviors>
+                </Image>
+                <Label x:Name="FlyoutItemLabel"
+                       Grid.Column="1"
+                       Text="{Binding Title}"
+                       FontSize="{OnPlatform Android=24, iOS=14}"
+                       FontAttributes="{OnPlatform iOS=Bold}"
+                       HorizontalOptions="{OnPlatform WinUI=Start, MacCatalyst=Start}"
+                       HorizontalTextAlignment="{OnPlatform WinUI=Start, MacCatalyst=Start}"
+                       VerticalTextAlignment="Center">
+                    <Label.TextColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="Android" Value="{AppThemeBinding Light=Black, Dark=White}" />
+                        </OnPlatform>
+                    </Label.TextColor>
+                   <Label.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="20,0,0,0" />
+                        </OnPlatform>
+                    </Label.Margin>
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="Android" Value="sans-serif-medium" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Home" Icon="fi_sr_home.png">
+        <Tab>
+            <ShellContent
+                ContentTemplate="{DataTemplate views:HomePage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Production"
+             Icon="fi_sr_hammer.png">
+            <ShellContent
+                Title="Overview"
+                Icon="fi_sr_hammer.png"
+                ContentTemplate="{DataTemplate viewsProduction:OverviewPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Aging"
+             Icon="fi_sr_hourglass_start.png">
+            <ShellContent
+                Title="Overview"
+                Icon="fi_sr_hourglass_start.png"
+                ContentTemplate="{DataTemplate viewsAging:OverviewPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Bottling"
+              Icon="fi_sr_wine_bottle.png">
+            <ShellContent
+                Title="Overview"
+                Icon="fi_sr_wine_bottle.png"
+                ContentTemplate="{DataTemplate viewsBottling:OverviewPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Tools" Icon="fi_sr_drafting_compass.png">
+            <ShellContent
+                Title="Tool 1"
+                Icon="fi_sr_drafting_compass.png"
+                ContentTemplate="{DataTemplate viewsTools:Tool1Page}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Settings" Icon="fi_sr_settings_sliders.png">
+            <ShellContent
+                Title="General"
+                Icon="fi_sr_settings_sliders.png"
+                ContentTemplate="{DataTemplate viewsSettings:GeneralPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Info"
+             Icon="fi_sr_info.png">
+            <ShellContent
+                Title="About"
+                Icon="fi_sr_browser.png"
+                ContentTemplate="{DataTemplate viewsInfo:AboutPage}" />
+            <ShellContent
+                Title="Licenses"
+                Icon="fi_sr_license.png"
+                ContentTemplate="{DataTemplate viewsInfo:LicensesPage}" />
+        </Tab>
+    </FlyoutItem>
+
+</Shell>
