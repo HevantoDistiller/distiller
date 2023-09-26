@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Standard font sizes -->
+    <x:Int32 x:Key="SizeXXXLarge">32</x:Int32>
+    <x:Int32 x:Key="SizeXXLarge">28</x:Int32>
+    <x:Int32 x:Key="SizeXLarge">24</x:Int32>
+    <x:Int32 x:Key="SizeLarge">20</x:Int32>
+    <x:Int32 x:Key="SizeNormal">16</x:Int32>
+    <x:Int32 x:Key="SizeSmall">12</x:Int32>
+    <x:Int32 x:Key="SizeXSmall">8</x:Int32>
+
+    <x:Int32 x:Key="SizeToolbarGlyph">22</x:Int32>
+    <x:Int32 x:Key="SizeListTitle">22</x:Int32>
+    <x:Int32 x:Key="SizeListSubtitle">16</x:Int32>
+
+</ResourceDictionary>

@@ -8,16 +8,18 @@ internal class AboutViewModel : ObservableObject
 {
     public string Title => AppInfo.Name;
     public string Version => AppInfo.VersionString;
-    public string MoreInfo => "https://www.hevanto.be/distiller";
+    public string GithubPage => "https://github.com/HevantoDistiller/distiller";
 
-    public string AboutHtml
-    {
+    public string AboutHtml {
         get {
-            if (_About is null)
+            if (_About is null) {
                 return "";
+            }
             return _About.HtmlContent;
         }
     }
+
+    public ICommand ShowGithubPage => new AsyncRelayCommand(LaunchGithubPage);
 
     private Models.About _About = null;
 
@@ -33,6 +35,6 @@ internal class AboutViewModel : ObservableObject
         }
     }
 
-    async Task ShowMoreInfo() =>
-        await Launcher.Default.OpenAsync(MoreInfo);
+    async Task LaunchGithubPage() =>
+        await Launcher.Default.OpenAsync(GithubPage);
 }

@@ -1,0 +1,228 @@
+[
+    {
+        "Kind": "Mass",
+        "System": "Metric",
+        "Name": "kilogram",
+        "Abbreviation": "kg",
+        "IsBase": true
+    },
+    {
+        "Kind": "Mass",
+        "System": "Metric",
+        "Name": "gram",
+        "Abbreviation": "g",
+        "ToBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 0.001
+            }
+        ],
+        "FromBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 1000.0
+            }
+        ]
+    },
+    {
+        "Kind": "Mass",
+        "System": "Imperial",
+        "Name": "pound",
+        "Abbreviation": "lb",
+        "ToBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 0.45359
+            }
+        ],
+        "FromBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 2.20463
+            }
+        ]
+    },
+    {
+        "Kind": "Mass",
+        "System": "Imperial",
+        "Name": "ounce",
+        "Abbreviation": "oz",
+        "ToBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 0.02835
+            }
+        ],
+        "FromBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 35.27337
+            }
+        ]
+    },
+    {
+        "Kind": "Volume",
+        "System": "Metric",
+        "Name": "liter",
+        "Abbreviation": "L",
+        "IsBase": true
+    },
+    {
+        "Kind": "Volume",
+        "System": "Metric",
+        "Name": "milliliter",
+        "Abbreviation": "mL",
+        "ToBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 0.001
+            }
+        ],
+        "FromBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 1000.0
+            }
+        ]
+    },
+    {
+        "Kind": "Volume",
+        "System": "Metric",
+        "Name": "centiliter",
+        "Abbreviation": "cL",
+        "ToBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 0.01
+            }
+        ],
+        "FromBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 100.0
+            }
+        ]
+    },
+    {
+        "Kind": "Volume",
+        "System": "Metric",
+        "Name": "hectoliter",
+        "Abbreviation": "hL",
+        "ToBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 100.0
+            }
+        ],
+        "FromBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 0.01
+            }
+        ]
+    },
+    {
+        "Kind": "Volume",
+        "System": "Imperial",
+        "Name": "fluid ounce",
+        "Abbreviation": "fl oz",
+        "ToBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 0.0284130652
+            }
+        ],
+        "FromBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 35.19507638338154
+            }
+        ]
+    },
+    {
+        "Kind": "Volume",
+        "System": "Imperial",
+        "Name": "pint",
+        "Abbreviation": "pt",
+        "ToBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 0.56826125
+            }
+        ],
+        "FromBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 1.759753986392702
+            }
+        ]
+    },
+    {
+        "Kind": "Volume",
+        "System": "Imperial",
+        "Name": "quart",
+        "Abbreviation": "qt",
+        "ToBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 1.1365225
+            }
+        ],
+        "FromBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 0.879876993196351
+            }
+        ]
+    },
+    {
+        "Kind": "Volume",
+        "System": "Imperial",
+        "Name": "gallon",
+        "Abbreviation": "gal",
+        "ToBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 4.54609
+            }
+        ],
+        "FromBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 0.21996924829908776
+            }
+        ]
+    },
+    {
+        "Kind": "Temperature",
+        "System": "Metric",
+        "Name": "celcius",
+        "Abbreviation": "°C",
+        "IsBase": true
+    },
+    {
+        "Kind": "Temperature",
+        "System": "Imperial",
+        "Name": "Fahrenheit",
+        "ToBaseFormulla": [
+            {
+                "Op": "Add",
+                "Value": -32
+            },
+            {
+                "Op": "Mul",
+                "Value": 0.5555555555555556
+            }
+        ],
+        "FromBaseFormulla": [
+            {
+                "Op": "Multiply",
+                "Value": 1.8
+            },
+            {
+                "Op": "Add",
+                "Value": 32
+            }
+        ]
+    }
+]

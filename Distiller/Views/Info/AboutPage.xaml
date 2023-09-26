@@ -12,9 +12,50 @@
 
     <ScrollView Margin="{OnPlatform MacCatalyst='0,40,0,0', iOS='0,40,0,0'}">
         <VerticalStackLayout Spacing="10"
-                             Padding="30,0">
+                             Padding="30,0"
+                             VerticalOptions="Center" >
+            <Image
+                Source="brewing.png"
+                SemanticProperties.Description="Distilling Equipment"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Label Text="{Binding Title}"
+                   HorizontalOptions="Center"
+                   FontSize="{DynamicResource SizeXXXLarge}"
+                   FontAttributes="Bold" />
+            
+            <HorizontalStackLayout Spacing="10"
+                                   HorizontalOptions="Center" >
+                <Label Text="Version:"
+                       FontSize="{DynamicResource SizeXLarge}"
+                       FontAttributes="Bold" />
+                <Label Text="{Binding Version}"
+                       FontSize="{DynamicResource SizeXLarge}" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10"
+                                   HorizontalOptions="Center">
+                <Label Text="Github:" />
+                <Label>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding ShowGithubPage}" />
+                    </Label.GestureRecognizers>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding GithubPage}"
+                                  TextColor="Blue"
+                                  TextDecorations="Underline" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </HorizontalStackLayout>
+
             <Label TextType="Html"
-                   Text="{Binding AboutHtml}" />
+                   Text="{Binding AboutHtml}"
+                   HorizontalOptions="Center" />
+
         </VerticalStackLayout>
     </ScrollView>
 

@@ -113,6 +113,10 @@
                 Title="Overview"
                 Icon="fi_sr_hammer.png"
                 ContentTemplate="{DataTemplate viewsProduction:OverviewPage}" />
+            <ShellContent
+                Title="Recipes"
+                Icon="fi_sr_memo.png"
+                ContentTemplate="{DataTemplate viewsProduction:RecipesPage}" />
         </Tab>
     </FlyoutItem>
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModelProduction="clr-namespace:Distiller.ViewModels.Production"
+             x:Class="Distiller.Views.Production.RecipesPage"
+             Title="Production - Recipes">
+
+    <ContentPage.BindingContext>
+        <viewModelProduction:RecipesViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Add"
+                     Command="{Binding NewCommand}"
+                     IconImageSource="{FontImage Glyph='+', Color={AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}, Size={DynamicResource SizeToolbarGlyph}}" />-->
+            <ToolbarItem Text="Add"
+                         Command="{Binding NewCommand}">
+                <ToolbarItem.IconImageSource>
+                    <FontImageSource Glyph="+"
+                               Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+                               Size="{StaticResource SizeToolbarGlyph}" />
+                </ToolbarItem.IconImageSource>
+            </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid Margin="{OnPlatform MacCatalyst='0,40,0,0', iOS='0,40,0,0'}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ScrollView>
+            <VerticalStackLayout Spacing="10"
+                                 Padding="30,0">
+                                 
+                <CollectionView x:Name="RecipesCollection"
+                                ItemsSource="{Binding AllRecipes}"
+                                SelectionChangedCommand="{Binding SelectRecipeCommand}"
+                                SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}"
+                                SelectionMode="Single">
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label Text="{Binding Title}"
+                                       FontSize="{DynamicResource SizeListTitle}"
+                                       VerticalOptions="CenterAndExpand"
+                                       Margin="20,0,0,0" />
+                                <Label Text="{Binding UpdatedAt}"
+                                       FontSize="{DynamicResource SizeListSubtitle}"
+                                       TextColor="Silver"
+                                       Margin="20,0,0,0" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <ScrollView Grid.Column="1">
+            <VerticalStackLayout>
+                <Label Text="Column2" Grid.Column="1" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+
+</ContentPage>

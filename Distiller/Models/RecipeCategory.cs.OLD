@@ -1,0 +1,34 @@
+using Newtonsoft.Json;
+
+namespace Distiller.Models;
+
+internal class RecipeCategory {
+    public string Name { get; }
+    
+    public RecipeCategory()
+    {
+        Name = "";
+    }
+
+    public RecipeCategory(string name)
+    {
+        Name = name;
+    }
+
+    public async static Task<IEnumerable<RecipeCategory>> LoadAll()
+    {
+        var serializer = new JsonSerializer();
+        List<string> categories = new();
+
+        using (var stream = await FileSystem.OpenAppPackageFileAsync("Data/RecipeCategories.json"))
+        using (var streamReader = new StreamReader(stream))
+        using (var textReader = new JsonTextReader(streamReader))
+        {
+            categories = serializer.Deserialize<List<string>>(textReader);
+        }
+
+        return categories
+            .Select(category => new RecipeCategory(category))
+            .OrderBy(category => category.Name);
+    }
+}
